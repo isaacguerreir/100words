@@ -1,0 +1,140 @@
+<DOCTYPE html>
+<html>
+    <head>
+    <title>100 Words</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="http://smtpjs.com/smtp.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <template v-if="nTimes < 21">
+            <h1>{{ title }}</h1>
+            <p>{{ word }}<p>
+            <p>{{ answer }}</p>
+            <input v-model="answer">
+            <button v-on:click="nextWord">Reverse Message</button>
+            </template>
+            <template v-else>
+                <h1>Your score is: {{ score }}</h1>
+            </template>
+        </div>
+    </body>
+
+    <script>
+        var dic = {
+            1: {
+                word: "the",
+                answer: "o"
+            },
+            2: {
+                word: "be",
+                answer: "ser"
+            },
+            3: {
+                word: "to",
+                answer: "para"
+            },
+            4: {
+                word: "of",
+                answer: "de"
+            },
+            5: {
+                word: "and",
+                answer: "e"
+            },
+            6: {
+                word: "a",
+                answer: "um"
+            },
+            7: {
+                word: "in",
+                answer: "no"
+            },
+            8: {
+                word: "that",
+                answer: "aquilo"
+            },
+            9: {
+                word: "have",
+                answer: "tem"
+            },
+            10: {
+                word: "I",
+                answer: "Eu"
+            },
+            11: {
+                word: "it",
+                answer: "isto"
+            },
+            12: {
+                word: "for",
+                answer: "para"
+            },
+            13: {
+                word: "not",
+                answer: "não"
+            },
+            14: {
+                word: "on",
+                answer: "ligado"
+            },
+            15: {
+                word: "with",
+                answer: "com"
+            },
+            16: {
+                word: "he",
+                answer: "ele"
+            },
+            17: {
+                word: "as",
+                answer: "como"
+            },
+            18: {
+                word: "you",
+                answer: "você"
+            },
+            19: {
+                word: "do",
+                answer: "fazer"
+            },
+            20: {
+                word: "at",
+                answer: "em"
+            },
+            21: {
+                word: "this",
+                answer: "isto"
+            }
+        };
+        var numeric = 1
+
+        new Vue ({
+            el: '#app',
+            data: {
+                title: '100 Words',
+                word: dic[numeric].word,
+                trueAnswer: dic[numeric].answer,
+                answer: '',
+                nTimes: 1,
+                score: 0
+            },
+            methods: {
+                nextWord: function () {
+                    if (this.answer == this.trueAnswer) {
+                    this.score += 1;
+                    }
+                    var log = this.score
+                    console.log(log);
+                    numeric += 1;
+                    this.nTimes = this.nTimes + 1;
+                    this.word = dic[numeric].word;
+                    this.trueAnswer = dic[numeric].answer;
+}
+            }
+        })
+
+
+    </script>
+</html>
+
